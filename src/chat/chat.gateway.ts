@@ -7,8 +7,8 @@ import { Socket } from 'socket.io';
 export class ChatGateway {
   constructor(private chatService: ChatService) {}
 
-  @SubscribeMessage('create/chat')
-  async handleCreate(client: Socket, payload: Chat): Promise<void> {
-    await this.chatService.createChat(payload);
-  }
+  // @SubscribeMessage('create/chat')
+  // async handleCreate(client: Socket, payload: Chat): Promise<void> {
+  //   await this.chatService.createChat(payload);
+  // }
 }

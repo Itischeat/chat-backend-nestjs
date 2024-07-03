@@ -19,6 +19,7 @@ export class UserService {
     console.log(payload);
     const createdUser = new this.userModel(payload);
     await createdUser.save();
+    return console.log('Пользователь успешно создан');
   }
 
   async connect(payload: connectDto) {

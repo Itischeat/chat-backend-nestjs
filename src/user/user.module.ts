@@ -6,6 +6,7 @@ import { UserGateway } from './user.gateway';
 import { UserChats, UserChatsSchema } from './schemas/user-chat.schema';
 import { ChatModule } from 'src/chat/chat.module';
 import { Chat, ChatSchema } from 'src/chat/schemas/chat.schema';
+import { UserController } from './user.controller';
 
 @Module({
   imports: [
@@ -17,5 +18,6 @@ import { Chat, ChatSchema } from 'src/chat/schemas/chat.schema';
     ChatModule,
   ],
   providers: [UserService, UserGateway],
+  controllers: [UserController],
 })
 export class UserModule {}

@@ -10,7 +10,6 @@ export class ChatService {
   ) {}
 
   async createChat(payload: Chat) {
-    console.log(payload);
     const createdChat = new this.chatModel(payload);
     await createdChat.save();
   }
