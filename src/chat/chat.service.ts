@@ -14,7 +14,7 @@ export class ChatService {
   ) {}
 
   async sendMessage(chat: Chat) {
-    if (!(chat.name === 'string' && isNaN(+chat.name))) {
+    if (!(typeof chat.name === 'string' && isNaN(+chat.name))) {
       throw new BadRequestException('Имя дожно быть строкой');
     }
     if (typeof chat === 'string') {
@@ -23,6 +23,6 @@ export class ChatService {
       );
     }
     const createdChat = new this.chatModel(chat);
-    return await createdChat.save();
+    await createdChat.save();
   }
 }

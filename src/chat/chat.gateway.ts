@@ -15,6 +15,8 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
   @SubscribeMessage('message')
   async handleMessage(client: Socket, payload: Chat): Promise<void> {
     await this.chatService.sendMessage(payload);
+    client.send('message recived');
+    return;
   }
 
   handleConnection(client: Socket) {
