@@ -5,9 +5,6 @@ export type UserChatsDocument = HydratedDocument<UserChats>;
 
 @Schema()
 export class UserChats {
-  @Prop({ type: Types.ObjectId })
-  _id: Types.ObjectId;
-
   @Prop({
     type: Types.ObjectId,
     ref: 'User',
