@@ -3,12 +3,12 @@ import { Socket } from 'socket.io';
 import { ChatService } from './chat.service';
 import { Chat } from './schemas/chat.schema';
 
-@WebSocketGateway() // server: Server;
+@WebSocketGateway()
 export class ChatGateway {
   constructor(private chatService: ChatService) {}
 
   @SubscribeMessage('message')
-  handleMessage(client: Socket, payload: Chat): string {
-    return 'Hello world!';
+  async handleMessage(client: Socket, payload: Chat) {
+    return await this.chatService.sendMessage(payload);
   }
 }
