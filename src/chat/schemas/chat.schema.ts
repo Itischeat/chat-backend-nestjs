@@ -8,14 +8,9 @@ export class Chat {
   @Prop({
     required: true,
     type: String,
+    unique: true,
   })
   name: string;
-
-  @Prop({
-    required: true,
-    type: String,
-  })
-  message: string;
 }
 
 export const ChatSchema = SchemaFactory.createForClass(Chat);
