@@ -1,0 +1,15 @@
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { HydratedDocument } from 'mongoose';
+
+export type CatDocument = HydratedDocument<Chat>;
+
+@Schema()
+export class Chat {
+  @Prop({ required: true })
+  name: string;
+
+  @Prop({ required: true })
+  message: string;
+}
+
+export const ChatSchema = SchemaFactory.createForClass(Chat);
