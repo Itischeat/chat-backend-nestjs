@@ -1,4 +1,8 @@
-import { Injectable, UnsupportedMediaTypeException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  UnsupportedMediaTypeException,
+} from '@nestjs/common';
 import { Model } from 'mongoose';
 import { Chat } from './schemas/chat.schema';
 import { InjectModel } from '@nestjs/mongoose';
@@ -10,6 +14,9 @@ export class ChatService {
   ) {}
 
   async sendMessage(chat: Chat) {
+    if (!(chat.name === 'string' && isNaN(+chat.name))) {
+      throw new BadRequestException('Имя дожно быть строкой');
+    }
     if (typeof chat === 'string') {
       throw new UnsupportedMediaTypeException(
         'Входная информация должна быть в JSON формате',

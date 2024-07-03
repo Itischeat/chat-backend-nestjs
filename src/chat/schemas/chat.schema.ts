@@ -7,11 +7,13 @@ export type ChatDocument = HydratedDocument<Chat>;
 export class Chat {
   @Prop({
     required: true,
+    type: String,
   })
   name: string;
 
   @Prop({
     required: true,
+    type: String,
   })
   message: string;
 }
