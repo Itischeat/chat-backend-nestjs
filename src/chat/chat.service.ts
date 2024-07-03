@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnsupportedMediaTypeException } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { Chat } from './schemas/chat.schema';
 import { InjectModel } from '@nestjs/mongoose';
@@ -10,7 +10,11 @@ export class ChatService {
   ) {}
 
   async sendMessage(chat: Chat) {
-    console.log(chat);
+    if (typeof chat === 'string') {
+      throw new UnsupportedMediaTypeException(
+        'Входная информация должна быть в JSON формате',
+      );
+    }
     const createdChat = new this.chatModel(chat);
     return await createdChat.save();
   }

@@ -5,10 +5,14 @@ export type ChatDocument = HydratedDocument<Chat>;
 
 @Schema()
 export class Chat {
-  @Prop({ required: true, unique: true })
+  @Prop({
+    required: true,
+  })
   name: string;
 
-  @Prop({ required: true })
+  @Prop({
+    required: true,
+  })
   message: string;
 }
 

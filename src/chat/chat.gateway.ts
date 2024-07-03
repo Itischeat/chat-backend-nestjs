@@ -8,7 +8,7 @@ export class ChatGateway {
   constructor(private chatService: ChatService) {}
 
   @SubscribeMessage('message')
-  async handleMessage(client: Socket, payload: Chat) {
-    return await this.chatService.sendMessage(payload);
+  async handleMessage(client: Socket, payload: Chat): Promise<void> {
+    await this.chatService.sendMessage(payload);
   }
 }
